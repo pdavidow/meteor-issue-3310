@@ -1,16 +1,12 @@
 var className = "Measure";
 
-Measure = function(beats) {
-    beats = beats || [];
-    check(beats, [Beat]);
-    this.beats = beats;
+Measure = function(n) {
+    this.n = n;
 };
 
 _.extend(Measure, {
     fromJSONValue: function(value) {
-        return new Measure(
-            EJSON.fromJSONValue(value.beats)
-        );
+        return new Measure(value.n)
     }
 });
 
@@ -19,9 +15,7 @@ _.extend(Measure.prototype, {
         return className;
     },
     toJSONValue: function() {
-        return {
-            beats: EJSON.toJSONValue(this.beats)
-        };
+        return {n: this.n};
     }
 });
 
